@@ -7,6 +7,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 require('dotenv').config();
 
+
 const {
     SESSION_SECRET,
     DOMAIN,
@@ -15,6 +16,8 @@ const {
     CALLBACK_URL,
     CONNECTION_STRING
 } = process.env;
+
+massive(CONNECTION_STRING).then(db => { app.set('db', db); })
 
 const app = express();
 
@@ -36,12 +39,12 @@ passport.use(new Auth0Strategy({
     scope: 'openid profile'
 }, (accessToken, refreshToken, extraParams, profile, done) => {
     const db = app.get('db')
-    let { id, displayName, picture } = profile;
+    let { displayName, picture, adminStatus, id } = profile;
     db.find_user([id]).then(user => {
         if (user[0]) {
             done(null, user[0].id)
         } else {
-            db.create_user([displayName, picture, id]).then((createdUser) => {
+            db.create_user([displayName, picture, adminStatus, id]).then((createdUser) => {
                 done(null, createdUser[0].id)
             })
         }
@@ -71,15 +74,6 @@ app.get('/auth/user', (req, res) => {
         res.status(401).send('Unauthorized user');
     }
 })
-
-app.get('/auth/logout', (req, res) => {
-    req.logOut();
-    res.redirect('http://localhost:4000');
-})
-
-
-
-massive(CONNECTION_STRING).then(db => { app.set('db', db); })
 
 const port = 4000;
 app.listen(port, () => {
