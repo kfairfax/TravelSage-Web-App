@@ -18,6 +18,7 @@ const {
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db); })
+// app.set stores info by setting it on a key:val pair
 
 const app = express();
 
@@ -29,6 +30,8 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
+// stores user info in session the session store/memory
+// use req.session to access the person's session we are interacting with
 app.use(passport.session());
 
 passport.use(new Auth0Strategy({
@@ -37,10 +40,16 @@ passport.use(new Auth0Strategy({
     clientSecret: CLIENT_SECRET,
     callbackURL: CALLBACK_URL,
     scope: 'openid profile'
+    // when the user authenticates, this is what we will get back
 }, (accessToken, refreshToken, extraParams, profile, done) => {
+    // this is where auth0 sends info back from google
     const db = app.get('db')
+    // here, we ask passport to retrieve the value tied to db, which is set above
     let { displayName, picture, adminStatus, id } = profile;
+    // the id used here is the auth_id from the database
     db.find_user([id]).then(user => {
+        // here, we query our sql database to see if there is a user with the passed-in id
+        // the info we get back is usally an object, but it is nested in an array
         if (user[0]) {
             done(null, user[0].id)
         } else {
@@ -52,11 +61,15 @@ passport.use(new Auth0Strategy({
 }));
 
 passport.serializeUser((primaryKeyId, done) => {
+    // the profile from above is an object that is added to the session store here
     done(null, primaryKeyId);
 })
 
 passport.deserializeUser((primaryKeyId, done) => {
+    // deserializeUser runs as middleware
+    // goes into the session store, grabs any value tied to the session(profile) and injects info into the callback
     app.get("db").find_session_user([primaryKeyId]).then(user => {
+        // whatever we pass out of deserializeUser gets added to req.user
         done(null, user[0])
     })
 })
@@ -64,7 +77,9 @@ passport.deserializeUser((primaryKeyId, done) => {
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
+    // redirects the user back to the front end where they started the login
     successRedirect: 'http://localhost:3000/#/tours'
+    // the hash symbol is used because we are using HashRouter
 }))
 
 app.get('/auth/user', (req, res) => {
