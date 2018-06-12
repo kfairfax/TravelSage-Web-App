@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import CreateTour from './components/CreateTour/CreateTour';
-import Login from './components/Login/Login';
-import Tours from './components/Tours/Tours';
-import Tour from './components/Tour/Tour';
-import Profile from './components/Profile/Profile';
 import Nav from './components/Nav/Nav';
-import Dash from './components/Dash/Dash';
-import EditTour from './components/EditTour/EditTour';
+import routes from './routes';
+
 
 
 class App extends Component {
@@ -15,15 +10,9 @@ class App extends Component {
     return (
       <div className="App">
 
-      <Login/>
-      <Tours/>
-      <Tour/>
-      <Profile/>
       <Nav/>
-      <Dash/>
-      <CreateTour/>
-      <EditTour/>
-
+      {routes}
+     
       </div>
     );
   }
