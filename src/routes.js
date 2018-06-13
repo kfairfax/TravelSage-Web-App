@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EditTour from './components/EditTour/EditTour';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
-import TourDetails from './components/TourDetails/TourDetails';
+import Tour from './components/Tour/Tour';
 import Tours from './components/Tours/Tours';
 
 export default(
@@ -13,7 +13,7 @@ export default(
     <Switch>
         <Route exact path='/' component={Login}/>
         <Route path='/tours' component={Tours}/>>
-        <Route path='/details/:id' component={TourDetails}/>
+        <Route path='/tour' component={Tour}/>
         <Route path='/dashboard' component={Dashboard}/>
         <Route path='/create' component={CreateTour}/>
         <Route path='/edit' component={EditTour}/>

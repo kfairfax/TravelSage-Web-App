@@ -90,6 +90,8 @@ app.get('/auth/user', (req, res) => {
     }
 })
 
+app.get('/api/tours', controller.getTrips)
+
 const port = 4000;
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

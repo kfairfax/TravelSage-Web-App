@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-class TourDetails extends Component {
+export default class Tour extends Component {
     render() {
         return (
       <div className="App">
-        TourDetails
+        Tour
       </div>
         );
     }
-}
-
-export default TourDetails;
+};

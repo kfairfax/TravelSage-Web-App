@@ -1,5 +1,6 @@
 import React from 'react';
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
+
 
 const Navigation = () => {
   return (
@@ -14,21 +15,21 @@ const Navigation = () => {
         <Navbar.Collapse>
        
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              Link Right
+            <NavItem eventKey={1} href="http://localhost:3000/#/">
+              Home
+            </NavItem>
+            <NavItem eventKey={2} href="http://localhost:3000/#/profile">
+              Profile
+            </NavItem>
+            <NavItem eventKey={2} href="http://localhost:3000/#/dashboard">
+              Admin
             </NavItem>
             <NavItem eventKey={2} href="#">
-              Link Right
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
+              Logout
             </NavItem>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>;
+      </Navbar>
         </div>
   )
 };
