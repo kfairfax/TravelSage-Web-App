@@ -90,7 +90,14 @@ app.get('/auth/user', (req, res) => {
     }
 })
 
+
+app.get('/auth/logout', (req, res)=>{
+    req.logOut();
+    res.redirect('http://localhost:4000');
+})
+
 app.get('/api/tours', controller.getTrips)
+app.post('/api/tour', controller.createTrip);
 
 const port = 4000;
 app.listen(port, () => {

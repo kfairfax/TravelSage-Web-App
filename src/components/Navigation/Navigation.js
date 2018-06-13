@@ -24,7 +24,7 @@ const Navigation = () => {
             <NavItem eventKey={2} href="http://localhost:3000/#/dashboard">
               Admin
             </NavItem>
-            <NavItem eventKey={2} href="#">
+            <NavItem eventKey={2} href="http://localhost:3000/auth/logout">
               Logout
             </NavItem>
           </Nav>

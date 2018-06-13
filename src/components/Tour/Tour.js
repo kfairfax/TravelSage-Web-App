@@ -1,11 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Tour extends Component {
-    render() {
-        return (
-      <div className="App">
-        Tour
-      </div>
-        );
-    }
+const Tour =(props) => {
+    const{tour}=props;
+    return(
+    
+        <div>
+           <img src={tour.trip_pic} alt='trip picture'/>
+           <br/>
+           <span>{tour.trip_name}</span>
+           <br/>
+           <span>{tour.description}</span>
+           <br/>
+           <span>{tour.dates}</span>
+           <br/>
+           <span>{tour.price}</span>
+        </div>
+    )
+
 };
+
+export default Tour;
