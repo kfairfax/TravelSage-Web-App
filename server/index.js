@@ -96,8 +96,10 @@ app.get('/auth/logout', (req, res)=>{
     res.redirect('http://localhost:4000');
 })
 
-app.get('/api/tours', controller.getTrips)
+app.get('/api/tours', controller.getTrips);
 app.post('/api/tour', controller.createTrip);
+app.get('/api/tour/:tourId', controller.getTrip);
+
 
 const port = 4000;
 app.listen(port, () => {

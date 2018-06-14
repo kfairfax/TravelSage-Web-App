@@ -23,8 +23,7 @@ class CreateTour extends Component {
       price: this.state.price,
       trip_pic: this.state.tripPic
     }).then(res => {
-      console.log(res.data)
-  //  how can I set these results on state and redirect to /details
+  this.props.history.push('/tours')
     })
   }
 
@@ -64,7 +63,7 @@ class CreateTour extends Component {
         <br />
         <input placeholder='Trip Image' value={tripPic} onChange={e => { this.handleTripPicChange(e.target.value) }} />
         <br />
-        <button onClick={() => { this.createTrip() }}>Preview Trip</button>
+        <button onClick={() => { this.createTrip() }}>Create</button>
         <br />
         <Link to='/dashboard'>
           <button on>Back to Edit</button>

@@ -15,7 +15,7 @@ const Navigation = () => {
         <Navbar.Collapse>
        
           <Nav pullRight>
-            <NavItem eventKey={1} href="http://localhost:3000/#/">
+            <NavItem eventKey={1} href="http://localhost:3000/#/tours">
               Home
             </NavItem>
             <NavItem eventKey={2} href="http://localhost:3000/#/profile">
