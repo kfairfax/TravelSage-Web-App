@@ -29,7 +29,7 @@ class Tours extends Component {
         {
           tourList.map((tour, i) => (
             <Tour key={i}
-              tour={tour} />
+              tour={tour}/>
           ))
         }
       </div>
