@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import routes from './routes';
 import Navigation from './components/Navigation/Navigation';
-
+import { withRouter } from 'react-router-dom';
 
 
 class App extends Component {
-
   render() {
     return (
       <div className="App">
-
-      <Navigation/>
+      {this.props.location.pathname !== '/' ? (<Navigation />) : ""}
 
       {routes}
      
@@ -20,4 +18,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

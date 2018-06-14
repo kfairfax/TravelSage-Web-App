@@ -9,8 +9,7 @@ class TourDetails extends Component {
                 trip_pic: '',
                 description: '',
                 dates: '',
-                price: '',
-                trip_pic: ''
+                price: ''
             }
         }
     }
@@ -24,6 +23,8 @@ class TourDetails extends Component {
     }
 
     render() {
+    console.log(this.props)
+
 
         const style = {
             width: '400px',
@@ -34,10 +35,12 @@ class TourDetails extends Component {
         return (
             <div className="App">
                 <p>{tour.trip_name}</p>
-                <img style={style} src={tour.trip_pic} alt='trip picture' />
+                <img style={style} src={tour.trip_pic} alt='' />
                 <p>{tour.description}</p>
                 <p>{tour.dates}</p>
                 <p>{tour.price}</p>
+
+                <button>Join</button>
             </div>
         );
     }

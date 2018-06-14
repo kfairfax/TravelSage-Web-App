@@ -12,7 +12,7 @@ const Tour = (props) => {
     return (
         <Link to={'/tour/' + tour.id}>
             <div>
-                <img style={style} src={tour.trip_pic} alt='trip picture' />
+                <img style={style} src={tour.trip_pic} alt='' />
                 <br />
                 <span>{tour.trip_name}</span>
             </div>

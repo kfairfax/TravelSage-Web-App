@@ -9,6 +9,7 @@ class Profile extends Component {
     }
 
     render() {
+        console.log(this.props)
         let { user_name, user_pic, auth_id } = this.props.user;
         return (
             <div className="App">
