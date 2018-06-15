@@ -17,7 +17,7 @@ class EditTour extends Component {
   componentDidMount() {
     axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
       console.log(res)
-      // this console log shows that res is an object, data is an array of objects, and data is from postgress
+      // this console log shows that res is an object, data is an array of objects, and data is coming from postgress
       this.setState({
         tripName: res.data[0].trip_name,
         description: res.data[0].description,

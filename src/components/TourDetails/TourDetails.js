@@ -17,13 +17,13 @@ class TourDetails extends Component {
 
     componentDidMount() {
         axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({ tour: res.data[0] })
         })
     }
 
     render() {
-    console.log(this.props)
+    // console.log(this.props)
 
 
         const style = {
@@ -40,7 +40,7 @@ class TourDetails extends Component {
                 <p>{tour.dates}</p>
                 <p>{tour.price}</p>
 
-                <button>Join</button>
+                <button>Join This Tour!</button>
             </div>
         );
     }

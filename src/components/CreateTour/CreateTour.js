@@ -66,7 +66,7 @@ class CreateTour extends Component {
         <button onClick={() => { this.createTrip() }}>Create</button>
         <br />
         <Link to='/dashboard'>
-          <button on>Back to Edit</button>
+          <button>Back to Edit</button>
         </Link>
       </div>
     );
