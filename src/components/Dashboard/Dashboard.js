@@ -11,7 +11,7 @@ class Dashboard extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getTrips();
   }
 
@@ -21,16 +21,30 @@ class Dashboard extends Component {
     });
   }
 
+  handleEditUpdate(id) {
+   this.props.history.push('/edit/' + id);
+   }
+
+  handleDelete(id) {
+    axios.delete('/api/tour/' + id).then(res => { window.location.reload() });
+  }
+
 
   render() {
-    const { tourList} = this.state;
+    const { tourList } = this.state;
     return (
       <div className="App">
-        Tours
+        Dashboard
         {
           tourList.map((tour, i) => (
-            <Tour key={i}
-              tour={tour}/>
+            <div key={i}>
+            {/* put the key in the div so that i is unique to each button, otherwise, the key is not unique to each child component */}
+              <Tour
+                tour={tour} />
+              <button onClick={() => { this.handleEditUpdate(tour.id) }}>Edit</button>
+              <button onClick={() => { this.handleDelete(tour.id) }}>Delete</button>
+              {/* use id and not tourId because we are getting this data directly from the database */}
+            </div>
           ))
         }
 

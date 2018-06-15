@@ -99,7 +99,8 @@ app.get('/auth/logout', (req, res)=>{
 app.get('/api/tours', controller.getTrips);
 app.post('/api/tour', controller.createTrip);
 app.get('/api/tour/:tourId', controller.getTrip);
-app.put('/api/edit/:tourId', controller.updateTrip)
+app.put('/api/tour/:tourId', controller.updateTrip);
+app.delete('/api/tour/:tourId', controller.deleteTrip);
 
 
 const port = 4000;

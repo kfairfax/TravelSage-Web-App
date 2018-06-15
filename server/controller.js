@@ -29,5 +29,13 @@ module.exports = {
         db.update_trip([tourId, trip_name, description, dates, price, trip_pic])
         .then(()=>res.status(200).send('We good!'))
         .catch(()=>res.status(500).send('Failed'))
+    },
+
+    deleteTrip:(req, res)=>{
+        const{tourId}=req.params;
+        const db=req.app.get('db');
+        db.delete_trip([tourId])
+        .then(()=>res.status(200).send('Good!'))
+        .catch(()=>res.status(500).send('Failed'))
     }
 }

@@ -1,1 +1,2 @@
-SELECT * FROM trips;
+SELECT * FROM trips
+ORDER BY id DESC;

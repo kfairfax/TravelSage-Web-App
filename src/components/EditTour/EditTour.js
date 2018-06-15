@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -15,16 +14,32 @@ class EditTour extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
+      console.log(res)
+      // this console log shows that res is an object, data is an array of objects, and data is from postgress
+      this.setState({
+        tripName: res.data[0].trip_name,
+        description: res.data[0].description,
+        dates: res.data[0].dates,
+        price: res.data[0].price,
+        tripPic: res.data[0].trip_pic
+      })
+    })
+  }
 
-  updateTrip(tourId) {
-    axios.put('/api/edit/'+ {tourId}, {
-        tripName: this.state.trip_name,
-        description: this.state.description,
-        dates: this.state.dates,
-        price: this.state.price,
-        tripPic: this.state.tripPic
-    }).then(res=>this.setState({tour: res.data}))
-}
+  updateTrip() {
+    axios.put(`/api/tour/${this.props.match.params.tourId}`, {
+      trip_name: this.state.tripName,
+      description: this.state.description,
+      dates: this.state.dates,
+      price: this.state.price,
+      trip_pic: this.state.tripPic
+    }).then(res => {
+      this.props.history.push('/dashboard')
+    }
+    )
+  }
 
   handleNameEdit(val) {
     this.setState({ tripName: val });
@@ -63,9 +78,7 @@ class EditTour extends Component {
         <br />
         <input placeholder='Trip Image' value={tripPic} onChange={e => { this.handleTripPicEdit(e.target.value) }} />
         <br />
-        <Link to='/dashboard'>
-          <button onClick={()=>{this.updateTrip()}}>Save</button>
-        </Link>
+        <button onClick={() => { this.updateTrip() }}>Save</button>
       </div>
     );
   }
