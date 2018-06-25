@@ -1,4 +1,4 @@
-SELECT * FROM trips_users;
-join users on trips_users.user_id = users.id
-join trips on trips_users.trip_id = trips.id
-where users.id = 2;
+SELECT * FROM users_trips
+join users on users_trips.user_id = users.id
+join trips on users_trips.trip_id = trips.id
+where users.id = $1;

@@ -30,7 +30,7 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-// stores user info in session the session store/memory
+// stores user info in the session store/memory
 // use req.session to access the person's session we are interacting with
 app.use(passport.session());
 
@@ -101,6 +101,7 @@ app.post('/api/tour', controller.createTrip);
 app.get('/api/tour/:tourId', controller.getTrip);
 app.put('/api/tour/:tourId', controller.updateTrip);
 app.delete('/api/tour/:tourId', controller.deleteTrip);
+app.get('/api/profile/:userId', controller.getTripsByUser);
 
 
 const port = 4000;
