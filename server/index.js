@@ -93,7 +93,7 @@ app.get('/auth/user', (req, res) => {
 
 app.get('/auth/logout', (req, res)=>{
     req.logOut();
-    res.redirect('http://localhost:4000');
+    res.redirect('http://localhost:3000');
 })
 
 app.get('/api/tours', controller.getTrips);

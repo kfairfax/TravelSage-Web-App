@@ -9,7 +9,7 @@ export default class Login extends Component {
 
       <Image src="https://img.freepik.com/free-vector/travel-background-with-lettering_23-2147768764.jpg?size=338&ext=jpg" responsive />
 
-        <a href={process.env.REACT_APP_LOGIN} target='_blank'>
+        <a href={process.env.REACT_APP_LOGIN}>
           <button>Login</button>
         </a>
 

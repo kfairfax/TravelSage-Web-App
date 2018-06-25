@@ -25,7 +25,8 @@ class Tours extends Component {
     const { tourList } = this.state;
     return (
       <div className="App">
-        Tours
+        <h3>Tours</h3>
+        <br/>
         {
           tourList.map((tour, i) => (
             <Tour key={i}

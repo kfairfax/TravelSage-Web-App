@@ -36,7 +36,7 @@ class Dashboard extends Component {
     const { tourList } = this.state;
     return (
       <div className="App">
-        Dashboard
+        <h3>Edit Your Trips Here!</h3>
         <br />
         <Link to='/create'>
           <button>Create Trip</button>

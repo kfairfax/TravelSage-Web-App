@@ -10,13 +10,14 @@ const Tour = (props) => {
     };
 
     return (
-        <Link to={'/tour/' + tour.id}>
-            <div>
-                <img style={style} src={tour.trip_pic} alt='' />
-                <br />
+        <div>
                 <span>{tour.trip_name}</span>
-            </div>
+                <br/>
+        <Link to={'/tour/' + tour.id}>
+                <img style={style} src={tour.trip_pic} alt='' />
         </Link>
+                
+            </div>
     )
 
 };

@@ -9,10 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {this.props.location.pathname !== '/' ? (<Navigation />) : ""}
+        {this.props.location.pathname !== '/' ? (<Navigation />) : ""}
 
-      {routes}
-     
+        {routes}
+
       </div>
     );
   }
