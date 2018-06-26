@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {getUser} from '../../ducks/reducer';
+
 
 class TourDetails extends Component {
     constructor() {
@@ -10,7 +13,7 @@ class TourDetails extends Component {
                 description: '',
                 dates: '',
                 price: ''
-            }
+            }, 
         }
     }
 
@@ -22,16 +25,23 @@ class TourDetails extends Component {
         })
     }
 
+    joinTrip(){
+        axios.post('/api/profile',{
+            trip_id: this.state.tour.id,
+        }).then(res=>{
+            this.props.history.push('/profile')
+        })
+
+    }
+
     render() {
     // console.log(this.props)
-
-
         const style = {
             width: '400px',
             height: '250px'
         };
 
-        const { tour } = this.state;
+        const { tour} = this.state;
         return (
             <div className="App">
                 <p>{tour.trip_name}</p>
@@ -40,11 +50,14 @@ class TourDetails extends Component {
                 <p>{tour.dates}</p>
                 <p>{tour.price}</p>
 
-                <button>Join This Tour!</button>
+                <button onClick={()=>{this.joinTrip()}}>Join This Tour!</button>
+
             </div>
         );
     }
 }
 
-export default TourDetails;
+export default connect(null, {getUser})(TourDetails);
+
+
 

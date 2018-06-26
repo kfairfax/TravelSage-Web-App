@@ -14,7 +14,7 @@ const {
     CLIENT_ID,
     CLIENT_SECRET,
     CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db); })
@@ -102,6 +102,7 @@ app.get('/api/tour/:tourId', controller.getTrip);
 app.put('/api/tour/:tourId', controller.updateTrip);
 app.delete('/api/tour/:tourId', controller.deleteTrip);
 app.get('/api/profile/:userId', controller.getTripsByUser);
+app.post('/api/profile', controller.joinTrip);
 
 
 const port = 4000;

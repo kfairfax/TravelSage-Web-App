@@ -24,8 +24,8 @@ class Profile extends Component {
         const { trips } = this.state;
 
         let myTrips = trips.map((trip, i) => {
-            console.log("trip ", trip)
-            return <p key={i}>
+            // console.log("trip ", trip)
+            return <div key={i}>
 
 
                 <br />
@@ -36,16 +36,16 @@ class Profile extends Component {
                     <Row>
                         <Col xs={6} md={3}>
                             <Thumbnail href="#" alt="171x180" src={trip.trip_pic} />
-                            '/tour/' + tour.id
+                          
                         </Col>
                     </Row>
                 </Grid>
-            </p>
+            </div>
 
         })
 
         let { user_name, user_pic} = this.props.user;
-        console.log("this.state.trips ", this.state.trips)
+        // console.log("this.state.trips ", this.state.trips)
 
 
         return (

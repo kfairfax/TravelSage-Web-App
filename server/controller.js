@@ -1,4 +1,5 @@
 module.exports = {
+
     getTrips: (req, res) => {
         const db = req.app.get('db');
         db.get_trips()
@@ -10,7 +11,7 @@ module.exports = {
         const { trip_name, description, dates, price, trip_pic } = req.body;
         const db = req.app.get('db');
         db.create_trip([trip_name, description, dates, price, trip_pic])
-            .then(trip => res.status(200).send('All good!'))
+            .then(() => res.status(200).send('All good!'))
             .catch(() => res.status(500).send('Failed'))
     },
 
@@ -41,9 +42,17 @@ module.exports = {
 
     getTripsByUser: (req, res) => {
         const db = req.app.get('db');
-        const {userId}=req.params;
+        const { userId } = req.params;
         db.get_trips_by_user([userId])
             .then(trips => res.status(200).send(trips))
             .catch(() => res.status(500).send('You Failed'))
+    },
+
+    joinTrip: (req, res) => {
+        const db = req.app.get('db');
+        const { tourId } = req.params;
+        db.join_trip([tourId])
+            .then(() => res.status(200).send('You joined this trip!'))
+            .catch(() => res.status(500).send('Failed'))
     }
-}
+};
