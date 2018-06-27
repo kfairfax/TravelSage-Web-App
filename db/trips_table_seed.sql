@@ -3,6 +3,6 @@ CREATE TABLE trips (
   trip_name VARCHAR(80),
   description TEXT,
   dates VARCHAR(30),
-  price VARCHAR(10),
+  price INTEGER,
   trip_pic TEXT
 );

@@ -1,0 +1,2 @@
+ALTER TABLE trips
+ALTER COLUMN price TYPE INTEGER using price :: INTEGER;

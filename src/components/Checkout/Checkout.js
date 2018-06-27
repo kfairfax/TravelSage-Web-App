@@ -16,7 +16,7 @@ class Checkout extends Component {
     componentDidMount() {
         window.scrollTo(0, 0)
         let amount = this.props.location.query.quantity
-        console.log(amount)
+        // console.log(amount)
         this.setState({
             price: amount
         })
@@ -27,7 +27,7 @@ class Checkout extends Component {
         token.card = void 0;
         axios.post('/api/payment', {
             token,
-            amount: this.state.price * 100
+            amount: this.state.price
         }).then(response => {
             this.setState({
                 redirect: true
