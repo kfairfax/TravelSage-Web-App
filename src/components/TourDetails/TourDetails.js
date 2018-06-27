@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getUser } from '../../ducks/reducer'
+import { getUser } from '../../ducks/reducer';
+import {Link} from 'react-router-dom';
 
 
 class TourDetails extends Component {
@@ -35,8 +36,6 @@ class TourDetails extends Component {
         axios.post('/api/join', {
             tourId: this.props.match.params.tourId,
             userId: this.state.userId
-        }).then(res => {
-            this.props.history.push('/checkout')
         })
     }
 
@@ -56,8 +55,11 @@ class TourDetails extends Component {
                 <p>{tour.dates}</p>
                 <p>{tour.price}</p>
 
-                <button onClick={() => this.joinTrip()}>Join This Tour!</button>
 
+                   <Link to={ { pathname: '/checkout', query: { quantity: tour.price } } }>
+                <button onClick={() => this.joinTrip()}>Join This Tour!</button>
+                
+                </Link>
             </div>
         );
     }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Tour from '../Tour/Tour';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {Doughnut} from 'react-chartjs-2';
+
 
 
 class Dashboard extends Component {
@@ -11,29 +13,60 @@ class Dashboard extends Component {
       tourList: []
     }
   }
-
+  
   componentDidMount() {
     this.getTrips();
   }
-
+  
   getTrips() {
     axios.get('api/tours').then(res => {
       this.setState({ tourList: res.data })
     });
   }
-
+  
   handleEditUpdate(id) {
     this.props.history.push('/edit/' + id);
   }
-
+  
   handleDelete(id) {
     axios.delete('/api/tour/' + id).then(res => { window.location.reload() });
     // this triggers a reload of the dashboard page as soon as a trip is deleted, without a redirect
   }
-
-
+  
+  
   render() {
-    const { tourList } = this.state;
+    const { tourList } = this.state;   
+  console.log(this.state.tourList)
+    const data = {
+      labels: [
+        'Maldives',
+        'Russia',
+        'South Korea',
+        'Malaysia',
+        'Croatia',
+        'Greece'
+      ],
+      datasets: [{
+        data: [5, 10, 8, 7, 32, 45],
+        backgroundColor: [
+        '#58594D',
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+        '#cc65fe',
+        '#33C870'
+        ],
+        hoverBackgroundColor: [
+        '#58594D',
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+        '#cc65fe',
+        '#33C870'
+        ]
+      }]
+    };
+
     return (
       <div className="App">
         <h3>Edit Your Trips Here!</h3>
@@ -57,7 +90,13 @@ class Dashboard extends Component {
             </div>
           ))
         }
-
+   
+     <div>
+        <h2>Trip Participation by Country</h2>
+        <Doughnut data={data} />
+      </div>
+     
+    
       </div>
     );
   }
