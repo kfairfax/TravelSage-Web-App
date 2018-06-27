@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import {getUser} from '../../ducks/reducer';
-
 
 class TourDetails extends Component {
     constructor() {
@@ -14,6 +11,7 @@ class TourDetails extends Component {
                 dates: '',
                 price: ''
             }, 
+            userId: ''
         }
     }
 
@@ -28,10 +26,10 @@ class TourDetails extends Component {
     joinTrip(){
         axios.post('/api/profile',{
             trip_id: this.state.tour.id,
+            user_id: this.state.userId
         }).then(res=>{
-            this.props.history.push('/profile')
+            this.props.history.push('/checkout')
         })
-
     }
 
     render() {
@@ -57,7 +55,7 @@ class TourDetails extends Component {
     }
 }
 
-export default connect(null, {getUser})(TourDetails);
+export default TourDetails;
 
 
 

@@ -3,6 +3,8 @@ import { getUser } from "./../../ducks/reducer";
 import { connect } from "react-redux";
 import axios from 'axios';
 import { Grid, Row, Col, Image, Thumbnail } from 'react-bootstrap';
+
+
 class Profile extends Component {
     constructor() {
         super();

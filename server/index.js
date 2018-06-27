@@ -6,6 +6,9 @@ const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 require('dotenv').config();
+// dotenv must be above stripe because stripe requires it in the line below
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
 
 
 const {
@@ -14,7 +17,7 @@ const {
     CLIENT_ID,
     CLIENT_SECRET,
     CALLBACK_URL,
-    CONNECTION_STRING,
+    CONNECTION_STRING
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db); })
@@ -103,6 +106,21 @@ app.put('/api/tour/:tourId', controller.updateTrip);
 app.delete('/api/tour/:tourId', controller.deleteTrip);
 app.get('/api/profile/:userId', controller.getTripsByUser);
 app.post('/api/profile', controller.joinTrip);
+
+//stripe 
+app.post('/api/payment', function(req, res, next){
+    
+    const charge = stripe.charges.create({
+        amount: req.body.amount*100, // amount in cents, again
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Test charge from react app'
+    }, function(err, charge) {
+        console.log(err)
+        if (err) return res.sendStatus(500)
+        return res.sendStatus(200);
+    });
+  });
 
 
 const port = 4000;
