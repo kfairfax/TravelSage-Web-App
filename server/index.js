@@ -17,7 +17,8 @@ const {
     CLIENT_ID,
     CLIENT_SECRET,
     CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    // APIKEY
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db); })

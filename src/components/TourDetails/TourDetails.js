@@ -29,6 +29,11 @@ class TourDetails extends Component {
             this.setState({userId: this.props.user.id})
 
         })
+
+        // axios.get('http://api.openweathermap.org/data/2.5/weather?q=Dubrovnik&appid=APIKEY').then(res=>{
+        //     console.log(((res.data.main.temp-273)*1.8)+32);
+        //     // this.setState({weather: res.data.results})
+        // })
     }
 
     joinTrip() {
@@ -60,6 +65,12 @@ class TourDetails extends Component {
                 <button onClick={() => this.joinTrip()}>Join This Tour!</button>
                 
                 </Link>
+
+                 {/* {
+          weather.map((trip_name,i) => (
+            <h3 key={i}>The weather in {trip_name.name} is {trip_name.temp}</h3>
+          ))
+        } */}
             </div>
         );
     }
