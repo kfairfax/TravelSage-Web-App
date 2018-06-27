@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getUser } from '../../ducks/reducer'
+
 
 class TourDetails extends Component {
     constructor() {
@@ -10,7 +13,7 @@ class TourDetails extends Component {
                 description: '',
                 dates: '',
                 price: ''
-            }, 
+            },
             userId: ''
         }
     }
@@ -20,26 +23,31 @@ class TourDetails extends Component {
         axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
             // console.log(res.data);
             this.setState({ tour: res.data[0] })
+        });
+        this.props.getUser().then(() => {
+            this.setState({userId: this.props.user.id})
+
         })
     }
 
-    joinTrip(){
-        axios.post('/api/profile',{
-            trip_id: this.state.tour.id,
-            user_id: this.state.userId
-        }).then(res=>{
+    joinTrip() {
+        // console.log(this.props.match.params.tourId)
+        axios.post('/api/join', {
+            tourId: this.props.match.params.tourId,
+            userId: this.state.userId
+        }).then(res => {
             this.props.history.push('/checkout')
         })
     }
 
     render() {
-    // console.log(this.props)
+        // console.log(this.props)
         const style = {
             width: '400px',
             height: '250px'
         };
 
-        const { tour} = this.state;
+        const { tour } = this.state;
         return (
             <div className="App">
                 <p>{tour.trip_name}</p>
@@ -48,14 +56,21 @@ class TourDetails extends Component {
                 <p>{tour.dates}</p>
                 <p>{tour.price}</p>
 
-                <button onClick={()=>{this.joinTrip()}}>Join This Tour!</button>
+                <button onClick={() => this.joinTrip()}>Join This Tour!</button>
 
             </div>
         );
     }
 }
 
-export default TourDetails;
+function mapStateToProps(state) {
+    return {
+      user: state.user
+    };
+  }
+  
+
+export default connect(mapStateToProps, {getUser})(TourDetails);
 
 
 

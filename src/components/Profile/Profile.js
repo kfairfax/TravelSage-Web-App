@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { getUser } from "./../../ducks/reducer";
-import { connect } from "react-redux";
 import axios from 'axios';
 import { Grid, Row, Col, Image, Thumbnail } from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 
 class Profile extends Component {
@@ -37,8 +38,9 @@ class Profile extends Component {
                 <Grid>
                     <Row>
                         <Col xs={6} md={3}>
-                            <Thumbnail href="#" alt="171x180" src={trip.trip_pic} />
-                          
+                        <Link to={"/tour/" + trip.id}>
+                            <Thumbnail  alt="171x180" src={trip.trip_pic} />
+                            </Link>
                         </Col>
                     </Row>
                 </Grid>
