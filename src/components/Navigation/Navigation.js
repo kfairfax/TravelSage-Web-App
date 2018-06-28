@@ -1,37 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 
+class Navigation extends Component {
+  constructor() {
+    super();
+    this.state = {
+      admin: true
+    }
+  }
 
-const Navigation = () => {
-  return (
-    <div>
-      <Navbar inverse collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#brand">TravelSage</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-       
-          <Nav pullRight>
-            <NavItem eventKey={1} href="http://localhost:3000/#/tours">
-              Home
-            </NavItem>
-            <NavItem eventKey={2} href="http://localhost:3000/#/profile">
-              Profile
-            </NavItem>
-            <NavItem eventKey={2} href="http://localhost:3000/#/dashboard">
-              Admin
-            </NavItem>
-            <NavItem eventKey={2} href="http://localhost:3000/auth/logout">
-              Logout
-            </NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-        </div>
-  )
+  componentDidMount() { }
+
+  render() {
+    return (
+
+      <div>
+
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#brand">TRVLSage</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+
+              <Nav pullRight>
+              <NavItem eventKey={1} href= {`${process.env.FRONTEND_URL}#/tours`}>
+                Home
+              </NavItem>
+              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/profile`}>
+                Profile
+              </NavItem>
+
+              {
+                this.state.admin
+                  ?
+              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/dashboard`}>
+                Admin
+              </NavItem>
+            :
+            ''
+            }
+            
+              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}auth/logout`}>
+                Logout
+               </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    )
+  }
 };
 
 export default Navigation;

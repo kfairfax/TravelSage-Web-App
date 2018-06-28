@@ -47,6 +47,11 @@ class Dashboard extends Component {
 
 
   render() {
+
+    const doughnutStyle = {
+      height:'500px',
+      width: '750px',
+    }
     const { tourList, tourParticipation } = this.state;
 
     let data = {
@@ -83,11 +88,12 @@ class Dashboard extends Component {
 
     return (
       <div className="App">
-        <div>
+
+        <div style ={doughnutStyle}>
           <h2>Trip Participation</h2>
           <Doughnut data={data} />
         </div>
-        <br />
+        
         <h3>Edit Your Trips Here!</h3>
         <br />
 
