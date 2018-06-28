@@ -11,6 +11,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 
+
 const {
     SESSION_SECRET,
     DOMAIN,
@@ -24,6 +25,8 @@ massive(CONNECTION_STRING).then(db => { app.set('db', db); })
 // app.set stores info by setting it on a key:val pair
 
 const app = express();
+app.use( express.static( `${__dirname}/../build` ) );
+// __ is a variable in node that tracks the project
 
 app.use(bodyParser.json());
 app.use(session({
@@ -81,7 +84,7 @@ passport.deserializeUser((primaryKeyId, done) => {
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
     // redirects the user back to the front end where they started the login
-    successRedirect: 'http://localhost:3000/#/tours'
+    successRedirect: `${process.env.FRONTEND_URL}#/tours`
     // the hash symbol is used because we are using HashRouter
 }))
 
@@ -96,7 +99,7 @@ app.get('/auth/user', (req, res) => {
 
 app.get('/auth/logout', (req, res)=>{
     req.logOut();
-    res.redirect('http://localhost:3000');
+    res.redirect(`${process.env.FRONTEND_URL}`);
 })
 
 app.get('/api/tours', controller.getTrips);
