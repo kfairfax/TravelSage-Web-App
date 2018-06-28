@@ -23,8 +23,10 @@ class Dashboard extends Component {
 
   getTripParticipation() {
     axios.get('/api/tour_participation').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
+      // this shows the format of the data coming back
       this.setState({ tourParticipation: res.data })
+      // tourParticipation is an array because that is the required format for data in the Doughnut chart
     })
   }
 
@@ -108,8 +110,6 @@ class Dashboard extends Component {
             </div>
           ))
         }
-
-
 
       </div>
     );

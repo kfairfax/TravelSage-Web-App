@@ -23,6 +23,7 @@ class TourDetails extends Component {
     
     componentDidMount() {
         const APIKEY=process.env.REACT_APP_WEATHER_APIKEY;
+        // this allows access fo the API key in the front end without exposing the key
 
         axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
             this.setState({ tour: res.data[0] })
