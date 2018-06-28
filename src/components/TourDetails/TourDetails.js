@@ -15,25 +15,29 @@ class TourDetails extends Component {
                 dates: '',
                 price: ''
             },
-            userId: ''
+            userId: '',
+            weather: ''
         }
     }
 
-
+    
     componentDidMount() {
+        const APIKEY=process.env.REACT_APP_WEATHER_APIKEY;
+
         axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
-            // console.log(res.data);
             this.setState({ tour: res.data[0] })
+            axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + res.data[0].trip_name + '&appid='+ APIKEY).then(res=>{
+                const temp=((res.data.main.temp-273)*1.8)+32;
+                this.setState({weather:temp.toFixed(1) })
+                // the.toFixed(1) specifies that the temperature will be displayed to contain only one decimal place
+                // the weather axios get call has to be nested in the api/tour get call because we want access to the city name before we load the weather for that city name and because they are asynchronous calls
+            });
         });
+
         this.props.getUser().then(() => {
             this.setState({userId: this.props.user.id})
+        });
 
-        })
-
-        // axios.get('http://api.openweathermap.org/data/2.5/weather?q=Dubrovnik&appid=APIKEY').then(res=>{
-        //     console.log(((res.data.main.temp-273)*1.8)+32);
-        //     // this.setState({weather: res.data.results})
-        // })
     }
 
     joinTrip() {
@@ -51,26 +55,21 @@ class TourDetails extends Component {
             height: '250px'
         };
 
-        const { tour } = this.state;
+        const { tour, weather } = this.state;
         return (
             <div className="App">
                 <p>{tour.trip_name}</p>
                 <img style={style} src={tour.trip_pic} alt='' />
                 <p>{tour.description}</p>
                 <p>{tour.dates}</p>
-                <p>{tour.price}</p>
+                <p>${tour.price}</p>
+                <p>It is currently {weather}&#8457; in {tour.trip_name}</p>
 
 
                    <Link to={ { pathname: '/checkout', query: { quantity: tour.price } } }>
                 <button onClick={() => this.joinTrip()}>Join This Tour!</button>
                 
                 </Link>
-
-                 {/* {
-          weather.map((trip_name,i) => (
-            <h3 key={i}>The weather in {trip_name.name} is {trip_name.temp}</h3>
-          ))
-        } */}
             </div>
         );
     }

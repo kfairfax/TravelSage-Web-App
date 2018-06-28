@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Tour from '../Tour/Tour';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {Doughnut} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 
 
@@ -10,67 +10,85 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      tourList: []
+      tourList: [],
+      tourParticipation: []
     }
   }
-  
+
   componentDidMount() {
     this.getTrips();
+    this.getTripParticipation();
+
   }
-  
+
+  getTripParticipation() {
+    axios.get('/api/tour_participation').then(res => {
+      console.log(res.data)
+      this.setState({ tourParticipation: res.data })
+    })
+  }
+
   getTrips() {
     axios.get('api/tours').then(res => {
       this.setState({ tourList: res.data })
     });
   }
-  
+
   handleEditUpdate(id) {
     this.props.history.push('/edit/' + id);
   }
-  
+
   handleDelete(id) {
     axios.delete('/api/tour/' + id).then(res => { window.location.reload() });
     // this triggers a reload of the dashboard page as soon as a trip is deleted, without a redirect
   }
-  
-  
+
+
   render() {
-    const { tourList } = this.state;   
-  console.log(this.state.tourList)
-    const data = {
+    const { tourList, tourParticipation } = this.state;
+
+    let data = {
       labels: [
-        'Maldives',
-        'Russia',
-        'South Korea',
-        'Malaysia',
-        'Croatia',
-        'Greece'
+
       ],
       datasets: [{
-        data: [5, 10, 8, 7, 32, 45],
+        data: [
+
+        ],
         backgroundColor: [
-        '#58594D',
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56',
-        '#cc65fe',
-        '#33C870'
+          '#58594D',
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#cc65fe',
+          '#33C870'
         ],
         hoverBackgroundColor: [
-        '#58594D',
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56',
-        '#cc65fe',
-        '#33C870'
+          '#58594D',
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#cc65fe',
+          '#33C870'
         ]
       }]
     };
 
+    tourParticipation.map((tour) => {
+      data.labels.push(tour.trip_name)
+      data.datasets[0].data.push(tour.count)
+    })
+
     return (
       <div className="App">
+        <div>
+          <h2>Trip Participation</h2>
+          <Doughnut data={data} />
+        </div>
+        <br />
         <h3>Edit Your Trips Here!</h3>
         <br />
+
         <Link to='/create'>
           <button>Create Trip</button>
         </Link>
@@ -90,13 +108,9 @@ class Dashboard extends Component {
             </div>
           ))
         }
-   
-     <div>
-        <h2>Trip Participation by Country</h2>
-        <Doughnut data={data} />
-      </div>
-     
-    
+
+
+
       </div>
     );
   }

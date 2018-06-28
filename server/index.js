@@ -18,7 +18,6 @@ const {
     CLIENT_SECRET,
     CALLBACK_URL,
     CONNECTION_STRING,
-    // APIKEY
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => { app.set('db', db); })
@@ -107,6 +106,7 @@ app.put('/api/tour/:tourId', controller.updateTrip);
 app.delete('/api/tour/:tourId', controller.deleteTrip);
 app.get('/api/profile/:userId', controller.getTripsByUser);
 app.post('/api/join', controller.joinTrip);
+app.get('/api/tour_participation', controller.getTripParticipation)
 
 //stripe 
 app.post('/api/payment', function(req, res, next){

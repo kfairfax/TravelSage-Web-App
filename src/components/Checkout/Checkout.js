@@ -39,7 +39,7 @@ class Checkout extends Component {
     render() {
         console.log(this.state);
         if (this.state.redirect)
-            return <Redirect to='/tours' />
+            return <Redirect to='/profile' />
 
         return (
             <div className='checkout-body'>

@@ -51,9 +51,16 @@ module.exports = {
     joinTrip: (req, res) => {
         const db = req.app.get('db');
         const { userId, tourId } = req.body ;
-        console.log(req.body);
+        // console.log(req.body);
         db.join_trip([userId, tourId])
             .then(() => res.status(200).send('You joined this trip!'))
             .catch(() => res.status(500).send('Failed'))
+    },
+
+    getTripParticipation: (req, res) => {
+        const db = req.app.get('db');
+        db.get_tour_participation()
+        .then((data) =>res.status(200).send(data))
+        .catch(() =>res.status(500).send())
     }
 };
