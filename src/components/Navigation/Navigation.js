@@ -26,14 +26,14 @@ class Navigation extends Component {
           <Navbar.Collapse>
 
               <Nav pullRight>
-              <NavItem eventKey={1} href= {`${process.env.FRONTEND_URL}#/tours`}>
+              <NavItem eventKey={1} href= {`${process.env.REACT_APP_FRONTEND_URL}#/tours`}>
                 Home
               </NavItem>
-              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/profile`}>
+              <NavItem eventKey={2} href={`${process.env.REACT_APP_FRONTEND_URL}#/profile`}>
                 Profile
               </NavItem>
 
-              {
+              {/* {
                 this.state.admin
                   ?
               <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/dashboard`}>
@@ -41,9 +41,9 @@ class Navigation extends Component {
               </NavItem>
             :
             ''
-            }
+            } */}
             
-              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}auth/logout`}>
+              <NavItem eventKey={2} href={`${process.env.REACT_APP_FRONTEND_URL}auth/logout`}>
                 Logout
                </NavItem>
             </Nav>
