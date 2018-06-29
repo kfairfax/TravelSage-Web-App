@@ -50,7 +50,7 @@ module.exports = {
 
     joinTrip: (req, res) => {
         const db = req.app.get('db');
-        const { userId, tourId } = req.body ;
+        const { userId, tourId } = req.body;
         // console.log(req.body);
         db.join_trip([userId, tourId])
             .then(() => res.status(200).send('You joined this trip!'))
@@ -60,7 +60,14 @@ module.exports = {
     getTripParticipation: (req, res) => {
         const db = req.app.get('db');
         db.get_tour_participation()
-        .then((data) =>res.status(200).send(data))
-        .catch(() =>res.status(500).send())
+            .then((data) => res.status(200).send(data))
+            .catch(() => res.status(500).send('Failed'))
+    },
+
+    getIsAdmin: (req, res) => {
+        const db = req.app.get('db');
+        db.get_is_admin()
+            .then((admin) => res.status(200).send(admin))
+            .catch(() => res.status(500).send('Failed'))
     }
 };

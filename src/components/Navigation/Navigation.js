@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import axios from 'axios';
 
 class Navigation extends Component {
   constructor() {
     super();
     this.state = {
-      admin: true
+      admin: false
     }
   }
 
-  componentDidMount() { }
+  componentDidMount() { 
+    axios.get('/api/admin').then(res => {
+      console.log(res.data[0].is_admin)
+      this.setState({ admin: res.data[0].is_admin })
+    })
+  }
 
   render() {
     return (
@@ -33,7 +39,7 @@ class Navigation extends Component {
                 Profile
               </NavItem>
 
-              {/* {
+              {
                 this.state.admin
                   ?
               <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/dashboard`}>
@@ -41,7 +47,7 @@ class Navigation extends Component {
               </NavItem>
             :
             ''
-            } */}
+            }
         
             
               <NavItem eventKey={2} href={`${process.env.REACT_APP_FRONTEND_URL}auth/logout`}>

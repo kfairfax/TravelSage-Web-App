@@ -109,7 +109,8 @@ app.put('/api/tour/:tourId', controller.updateTrip);
 app.delete('/api/tour/:tourId', controller.deleteTrip);
 app.get('/api/profile/:userId', controller.getTripsByUser);
 app.post('/api/join', controller.joinTrip);
-app.get('/api/tour_participation', controller.getTripParticipation)
+app.get('/api/tour_participation', controller.getTripParticipation);
+app.get('/api/admin', controller.getIsAdmin);
 
 //stripe 
 app.post('/api/payment', function(req, res, next){
