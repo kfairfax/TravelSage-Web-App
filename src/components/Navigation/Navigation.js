@@ -25,7 +25,7 @@ class Navigation extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#brand">TRVLSage</a>
+              <a href="#brand">TRVLsage</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
