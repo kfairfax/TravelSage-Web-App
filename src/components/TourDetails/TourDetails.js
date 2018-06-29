@@ -27,7 +27,7 @@ class TourDetails extends Component {
 
         axios.get(`/api/tour/${this.props.match.params.tourId}`).then(res => {
             this.setState({ tour: res.data[0] })
-            axios.get('http://api.openweathermap.org/data/2.5/weather?q=' + res.data[0].trip_name + '&appid='+ APIKEY).then(res=>{
+            axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + res.data[0].trip_name + '&appid='+ APIKEY).then(res=>{
                 const temp=((res.data.main.temp-273)*1.8)+32;
                 this.setState({weather:temp.toFixed(1) })
                 // the.toFixed(1) specifies that the temperature will be displayed to contain only one decimal place
