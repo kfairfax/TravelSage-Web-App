@@ -27,12 +27,15 @@ class Tours extends Component {
       <div className="App">
         <h3>Tours</h3>
         <br/>
+        <div className="toursContainer">
+
         {
           tourList.map((tour, i) => (
             <Tour key={i}
-              tour={tour}/>
+            tour={tour}/>
           ))
         }
+        </div>
       </div>
     );
   }

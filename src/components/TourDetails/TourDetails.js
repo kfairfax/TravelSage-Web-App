@@ -51,17 +51,12 @@ class TourDetails extends Component {
     }
 
     render() {
-        // console.log(this.props)
-        const style = {
-            width: '400px',
-            height: '250px'
-        };
 
         const { tour, weather } = this.state;
         return (
             <div className="App">
                 <p>{tour.trip_name}</p>
-                <img style={style} src={tour.trip_pic} alt='' />
+                <img src={tour.trip_pic} alt='' />
                 <p>{tour.description}</p>
                 <p>{tour.dates}</p>
                 <p>${tour.price}</p>

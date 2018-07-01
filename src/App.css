@@ -26,3 +26,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.toursContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.tourContainer {
+  width: 31.7%;
+  border: 2px solid #EEEEEE;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.tourImage {
+  height: 80%;
+  padding: 8px 8px 0px 8px;
+}
+
+.tourName {
+  height: 20%;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
