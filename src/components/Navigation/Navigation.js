@@ -42,7 +42,7 @@ class Navigation extends Component {
               {
                 this.state.admin
                   ?
-              <NavItem eventKey={2} href={`${process.env.FRONTEND_URL}#/dashboard`}>
+              <NavItem eventKey={2} href={`${process.env.REACT_APP_FRONTEND_URL}#/dashboard`}>
                 Admin
               </NavItem>
             :

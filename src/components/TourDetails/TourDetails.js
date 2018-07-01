@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getUser } from '../../ducks/reducer';
 import {Link} from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 class TourDetails extends Component {
@@ -68,7 +69,7 @@ class TourDetails extends Component {
 
 
                    <Link to={ { pathname: '/checkout', query: { quantity: tour.price } } }>
-                <button onClick={() => this.joinTrip()}>Join This Tour!</button>
+                <Button onClick={() => this.joinTrip()}>Join This Tour!</Button>
                 
                 </Link>
             </div>

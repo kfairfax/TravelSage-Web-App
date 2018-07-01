@@ -3,6 +3,7 @@ import Tour from '../Tour/Tour';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Doughnut } from 'react-chartjs-2';
+import { Button } from 'react-bootstrap';
 
 
 
@@ -98,7 +99,7 @@ class Dashboard extends Component {
         <br />
 
         <Link to='/create'>
-          <button>Create Trip</button>
+          <Button>Create Trip</Button>
         </Link>
         <br />
 
@@ -109,8 +110,8 @@ class Dashboard extends Component {
               <Tour
                 tour={tour} />
               {/* map over the Edit and Delete buttons so that they appear for each individual trip */}
-              <button onClick={() => { this.handleEditUpdate(tour.id) }}>Edit</button>
-              <button onClick={() => { this.handleDelete(tour.id) }}>Delete</button>
+              <Button onClick={() => { this.handleEditUpdate(tour.id) }}>Edit</Button>
+              <Button onClick={() => { this.handleDelete(tour.id) }}>Delete</Button>
               {/* edit and delete are tour specific, so it must be handled with the id parameter */}
               {/* use id and not tourId because we are getting this data directly from the database */}
             </div>

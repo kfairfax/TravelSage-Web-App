@@ -3,6 +3,7 @@ import './App.css';
 import routes from './routes';
 import Navigation from './components/Navigation/Navigation';
 import { withRouter } from 'react-router-dom';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 
 class App extends Component {

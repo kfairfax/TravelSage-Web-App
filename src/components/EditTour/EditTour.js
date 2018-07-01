@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { ControlLabel, Form, FormGroup, Col, FormControl, Button } from 'react-bootstrap';
 
 
 class EditTour extends Component {
@@ -65,20 +66,73 @@ class EditTour extends Component {
   render() {
     const { tripName, description, dates, price, tripPic } = this.state;
     return (
-      <div className="App">
-        EditTour
-        <br />
-        <input placeholder='Trip Name' value={tripName} onChange={(e) => { this.handleNameEdit(e.target.value) }} />
-        <br />
-        <input placeholder='Description' value={description} onChange={(e) => { this.handleDescriptionEdit(e.target.value) }} />
-        <br />
-        <input placeholder='Dates' value={dates} onChange={(e) => { this.handleDatesEdit(e.target.value) }} />
-        <br />
-        <input placeholder='Price' value={price} onChange={(e) => { this.handlePriceEdit(e.target.value) }} />
-        <br />
-        <input placeholder='Trip Image' value={tripPic} onChange={e => { this.handleTripPicEdit(e.target.value) }} />
-        <br />
-        <button onClick={() => { this.updateTrip() }}>Save</button>
+      <div className="App" class="row">
+        <div class="col-md-4">
+          <h3>EditTour</h3>
+
+          <Form horizontal>
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Trip Name</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={tripName} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4} class="text-right">
+                <p class="text-right">
+                  <ControlLabel>Description</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={description} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Dates</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={dates} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Price</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={price} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Trip Image</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={tripPic} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col smOffset={2} sm={10}>
+                <Button type="button" onClick={() => { this.updateTrip() }}>Save</Button>
+              </Col>
+            </FormGroup>
+          </Form>
+        </div>
       </div>
     );
   }

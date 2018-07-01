@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 
 
 export default class Login extends Component {
@@ -13,7 +13,7 @@ export default class Login extends Component {
         {/* we cannot proxy a tags! */}
 
         <a href={process.env.REACT_APP_LOGIN}>
-          <button>Login</button>
+          <Button>Login</Button>
         </a>
 
       </div>

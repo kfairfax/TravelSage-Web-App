@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ControlLabel, Form, FormGroup, Col, FormControl, Button } from 'react-bootstrap';
 
 class CreateTour extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class CreateTour extends Component {
       price: '',
       tripPic: ''
     }
-    this.createTrip=this.createTrip.bind(this);
+    this.createTrip = this.createTrip.bind(this);
   }
 
   createTrip() {
@@ -23,7 +24,7 @@ class CreateTour extends Component {
       price: this.state.price,
       trip_pic: this.state.tripPic
     }).then(res => {
-  this.props.history.push('/tours')
+      this.props.history.push('/tours')
     })
   }
 
@@ -50,24 +51,82 @@ class CreateTour extends Component {
   render() {
     const { tripName, description, dates, price, tripPic } = this.state;
     return (
-      <div className="App">
-        CreateTour
-        <br />
-        <input placeholder='Trip Name' value={tripName} onChange={(e) => { this.handleNameChange(e.target.value) }} />
-        <br />
-        <input placeholder='Description' value={description} onChange={(e) => { this.handleDescriptionChange(e.target.value) }} />
-        <br />
-        <input placeholder='Dates' value={dates} onChange={(e) => { this.handleDatesChange(e.target.value) }} />
-        <br />
-        <input placeholder='Price' value={price} onChange={(e) => { this.handlePriceChange(e.target.value) }} />
-        <br />
-        <input placeholder='Trip Image' value={tripPic} onChange={e => { this.handleTripPicChange(e.target.value) }} />
-        <br />
-        <button onClick={() => { this.createTrip() }}>Create</button>
-        <br />
-        <Link to='/dashboard'>
-          <button>Back to Edit</button>
-        </Link>
+      <div className="App" class="row">
+        <div class="col-md-4">
+
+          <h3>CreateTour</h3>
+          <Form horizontal>
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Trip Name</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={tripName} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4} class="text-right">
+                <p class="text-right">
+                  <ControlLabel>Description</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={description} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Dates</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={dates} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Price</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={price} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col componentClass="inputLabel" sm={4}>
+                <p class="text-right">
+                  <ControlLabel>Trip Image</ControlLabel>
+                </p>
+              </Col>
+              <Col sm={8}>
+                <FormControl value={tripPic} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col smOffset={2} sm={10}>
+                <Button type="button" onClick={() => { this.createTrip() }}>Create</Button>
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col smOffset={2} sm={10}>
+                <Link to='/dashboard'>
+                  <Button type="button">Back to Edit</Button>
+                </Link>
+              </Col>
+            </FormGroup>
+
+          </Form>
+        </div>
       </div>
     );
   }
