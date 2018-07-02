@@ -75,7 +75,7 @@ class CreateTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={description} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={description} onChange={(e) => { this.handleDescriptionChange(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -86,7 +86,7 @@ class CreateTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={dates} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={dates} onChange={(e) => { this.handleDatesChange(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -97,7 +97,7 @@ class CreateTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={price} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={price} onChange={(e) => { this.handlePriceChange(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -108,7 +108,7 @@ class CreateTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={tripPic} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={tripPic} onChange={(e) => { this.handleTripPicChange(e.target.value) }} />
               </Col>
             </FormGroup>
 

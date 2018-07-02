@@ -77,7 +77,7 @@ class EditTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={tripName} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={tripName} onChange={(e) => { this.handleNameEdit(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -88,7 +88,7 @@ class EditTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={description} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={description} onChange={(e) => { this.handleDescriptionEdit(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -99,7 +99,7 @@ class EditTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={dates} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={dates} onChange={(e) => { this.handleDatesEdit(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -110,7 +110,7 @@ class EditTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={price} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={price} onChange={(e) => { this.handlePriceEdit(e.target.value) }} />
               </Col>
             </FormGroup>
 
@@ -121,7 +121,7 @@ class EditTour extends Component {
                 </p>
               </Col>
               <Col sm={9}>
-                <FormControl value={tripPic} onChange={(e) => { this.handleNameChange(e.target.value) }} />
+                <FormControl value={tripPic} onChange={(e) => { this.handleTripPicEdit(e.target.value) }} />
               </Col>
             </FormGroup>
 
