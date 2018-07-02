@@ -85,24 +85,27 @@ class Dashboard extends Component {
     return (
       <div>
 
-        <div>
-          <h3>Trip Participation</h3>
-          <div className="doughnutChartContainer" >
-            <Doughnut data={data} />
-          </div>
+        <div className="dashboardTourContainer">
+            <h3>Trip Participation</h3>
+              <div className="doughnutChartContainer" >
+                <Doughnut data={data} />
+             </div>
+            <br/>
+
+            <h1>Edit Your Trips Here!</h1>
+            <br/>
+
+              <Link to='/create'>
+                <Button>Create Trip</Button>
+              </Link>
+            <br/>
         </div>
+            <br/>
 
-        <h3>Edit Your Trips Here!</h3>
-        <br />
-
-        <Link to='/create'>
-          <Button>Create Trip</Button>
-        </Link>
-        <br />
         <div className="toursBody">
           {
             tourList.map((tour, i) => (
-              <div key={i}>
+              <div className="tourFlex" key={i}>
                 {/* put the key in the div so that i is unique to each button, otherwise, the key is not unique to each child component */}
                 <Tour
                   tour={tour} />

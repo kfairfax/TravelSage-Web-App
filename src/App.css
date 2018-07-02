@@ -18,7 +18,7 @@
   border: 2px solid #EEEEEE;
   border-radius: 10px;
   margin: 10px;
-  width: 31.7%;  
+  /* width: 31.7%;   */
 }
 
 .editTourContainer {
@@ -80,11 +80,17 @@
 .doughnutChartContainer {
   height: 40%;
   width: 40%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .dashboardTourContainer {
   text-align: center;
 }
 
+.tourFlex {
+  width: 31.7%;  
+  text-align: center;
+}
 
 
