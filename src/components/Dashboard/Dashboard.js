@@ -48,11 +48,6 @@ class Dashboard extends Component {
 
 
   render() {
-
-    const doughnutStyle = {
-      height:'500px',
-      width: '750px',
-    }
     const { tourList, tourParticipation } = this.state;
 
     let data = {
@@ -88,13 +83,15 @@ class Dashboard extends Component {
     })
 
     return (
-      <div className="App">
+      <div>
 
-        <div style ={doughnutStyle}>
-          <h2>Trip Participation</h2>
-          <Doughnut data={data} />
+        <div>
+          <h3>Trip Participation</h3>
+          <div className="doughnutChartContainer" >
+            <Doughnut data={data} />
+          </div>
         </div>
-        
+
         <h3>Edit Your Trips Here!</h3>
         <br />
 
@@ -102,21 +99,23 @@ class Dashboard extends Component {
           <Button>Create Trip</Button>
         </Link>
         <br />
+        <div className="toursBody">
+          {
+            tourList.map((tour, i) => (
+              <div key={i}>
+                {/* put the key in the div so that i is unique to each button, otherwise, the key is not unique to each child component */}
+                <Tour
+                  tour={tour} />
+                {/* map over the Edit and Delete buttons so that they appear for each individual trip */}
+                <Button onClick={() => { this.handleEditUpdate(tour.id) }}>Edit</Button>
+                <Button onClick={() => { this.handleDelete(tour.id) }}>Delete</Button>
+                {/* edit and delete are tour specific, so it must be handled with the id parameter */}
+                {/* use id and not tourId because we are getting this data directly from the database */}
+              </div>
+            ))
+          }
 
-        {
-          tourList.map((tour, i) => (
-            <div key={i}>
-              {/* put the key in the div so that i is unique to each button, otherwise, the key is not unique to each child component */}
-              <Tour
-                tour={tour} />
-              {/* map over the Edit and Delete buttons so that they appear for each individual trip */}
-              <Button onClick={() => { this.handleEditUpdate(tour.id) }}>Edit</Button>
-              <Button onClick={() => { this.handleDelete(tour.id) }}>Delete</Button>
-              {/* edit and delete are tour specific, so it must be handled with the id parameter */}
-              {/* use id and not tourId because we are getting this data directly from the database */}
-            </div>
-          ))
-        }
+        </div>
 
       </div>
     );

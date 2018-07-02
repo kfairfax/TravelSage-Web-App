@@ -1,33 +1,13 @@
-.App {
+.loginContainer {
+  margin-top: 60px;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .toursContainer {
+  text-align: center;
+}
+
+.toursBody {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -35,10 +15,20 @@
 }
 
 .tourContainer {
-  width: 31.7%;
   border: 2px solid #EEEEEE;
   border-radius: 10px;
   margin: 10px;
+  width: 31.7%;  
+}
+
+.editTourContainer {
+  margin: 0 20px;
+}
+
+.editTourBody {
+  text-align: center;
+  margin: 0 auto;  
+  width: 50%;
 }
 
 .tourImage {
@@ -56,3 +46,45 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+.tourDetailContainer {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.detailContainer {
+ text-align: left;
+}
+
+.detailContainer span {
+  font-weight: bold;
+}
+
+.tourDetailImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.tourDetailImageContainer {
+  width: 75%;
+  border: 2px solid #EEEEEE;
+  border-radius: 10px;
+  padding: 8px 8px 8px 8px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.doughnutChartContainer {
+  height: 40%;
+  width: 40%;
+}
+
+.dashboardTourContainer {
+  text-align: center;
+}
+
+
+
