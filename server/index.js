@@ -121,7 +121,7 @@ app.post('/api/payment', function(req, res, next){
         source: req.body.token.id,
         description: 'Test charge from react app'
     }, function(err, charge) {
-        console.log(err)
+        // console.log(err)
         if (err) return res.sendStatus(500)
         return res.sendStatus(200);
     });

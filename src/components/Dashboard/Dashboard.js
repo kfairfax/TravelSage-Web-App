@@ -59,20 +59,20 @@ class Dashboard extends Component {
 
         ],
         backgroundColor: [
-          '#58594D',
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#cc65fe',
-          '#33C870'
+          '#5680E9',
+          '#84CEEB',
+          '#5AB9EA',
+          '#C1C8E4',
+          '#8860D0',
+          '#68D7CD'
         ],
         hoverBackgroundColor: [
-          '#58594D',
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#cc65fe',
-          '#33C870'
+          '#97B0EF',
+          '#A7DAEE',
+          '#99CEE8',
+          '#E2E3E6',
+          '#A891D2',
+          '#92D9D3'
         ]
       }]
     };

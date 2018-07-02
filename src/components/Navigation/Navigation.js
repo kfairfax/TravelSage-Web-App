@@ -12,7 +12,7 @@ class Navigation extends Component {
 
   componentDidMount() { 
     axios.get('/api/admin').then(res => {
-      console.log(res.data[0].is_admin)
+      // console.log(res.data[0].is_admin)
       this.setState({ admin: res.data[0].is_admin })
     })
   }
