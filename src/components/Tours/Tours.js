@@ -30,9 +30,9 @@ class Tours extends Component {
         <div className="toursBody">        
         {
           tourList.map((tour, i) => (
-            <div className="tourFlex">
+            <div className="tourFlex" key={i}>
 
-              <Tour key={i}
+              <Tour
               tour={tour}/>
             
               </div>

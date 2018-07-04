@@ -58,7 +58,7 @@ class CreateTour extends Component {
 
           <Form horizontal>
             <FormGroup>
-              <Col componentClass="inputLabel" sm={3}>
+              <Col sm={3}>
                 <p className="text-right">
                   <ControlLabel>Trip Name</ControlLabel>
                 </p>
@@ -69,7 +69,7 @@ class CreateTour extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Col componentClass="inputLabel" sm={3} className="text-right">
+              <Col sm={3} className="text-right">
                 <p className="text-right">
                   <ControlLabel>Description</ControlLabel>
                 </p>
@@ -80,7 +80,7 @@ class CreateTour extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Col componentClass="inputLabel" sm={3}>
+              <Col sm={3}>
                 <p className="text-right">
                   <ControlLabel>Dates</ControlLabel>
                 </p>
@@ -91,7 +91,7 @@ class CreateTour extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Col componentClass="inputLabel" sm={3}>
+              <Col sm={3}>
                 <p className="text-right">
                   <ControlLabel>Price</ControlLabel>
                 </p>
@@ -102,7 +102,7 @@ class CreateTour extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Col componentClass="inputLabel" sm={3}>
+              <Col sm={3}>
                 <p className="text-right">
                   <ControlLabel>Trip Image</ControlLabel>
                 </p>

@@ -37,7 +37,10 @@ module.exports = {
         const db = req.app.get('db');
         db.delete_trip([tourId])
             .then(() => res.status(200).send('Good!'))
-            .catch(() => res.status(500).send('Failed'))
+            .catch((err) => {
+                res.status(500).send('Failed')
+                //  console.log(err)
+            })
     },
 
     getTripsByUser: (req, res) => {
