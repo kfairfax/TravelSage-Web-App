@@ -20,9 +20,9 @@ class Navigation extends Component {
   render() {
     return (
 
-      <div>
+      <div >
 
-        <Navbar inverse collapseOnSelect>
+        <Navbar inverse collapseOnSelect fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="#brand">TRVLsage</a>
